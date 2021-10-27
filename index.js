@@ -59,9 +59,9 @@ function playRound(playerSelection, computerSelection){
 
 function game(){
 
-    let cscore = 0, pscore = 0;
+    let cscore = 0, pscore = 0, count = 5;
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= count; i++) {
 
         let playerSelection = userChoice();
         let computerSelection = computerChoice();
@@ -69,6 +69,7 @@ function game(){
 
         if(status == -1){
             console.log("Draw , no one wins");
+            count++;
         }
 
         if(status == 0){
