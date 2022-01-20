@@ -81,6 +81,7 @@ function restartGame(){
     stat.textContent = '';
 }
 
+
 function computerChoice() {
     let computerChoice = (Math.random() * 3)
 
