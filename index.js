@@ -18,18 +18,18 @@ buttons.forEach(btn => {
 
 restart.addEventListener('click', restartGame)
 
-function updateScore(){
+function updateScore() {
     pscore.textContent = `PLAYER: ${playerScore}`;
     cscore.textContent = `COMPUTER: ${computerScore}`;
 }
 
-function disableButtons(){
+function disableButtons() {
     buttons.forEach(btn => {
         btn.disabled = true;
     });
 }
 
-function enableButtons(){
+function enableButtons() {
     restart.classList.add('hide');
     buttons.forEach(btn => {
         btn.disabled = false;
@@ -45,34 +45,34 @@ function getInput(e) {
 
     console.log(e.target.value);
 
-    if(result == 1){
+    if (result == 1) {
         stat.classList.add('win');
     }
 
-    if(result == 0){
+    if (result == 0) {
         stat.classList.add('lose');
     }
 
-    if(result == -1){
+    if (result == -1) {
         stat.classList.add('draw');
     }
 
-    if(computerScore == 5 || playerScore == 5){
+    if (computerScore == 5 || playerScore == 5) {
         disableButtons();
         restart.removeAttribute('class');
 
-        if(computerScore > playerScore){
+        if (computerScore > playerScore) {
             winner.textContent = "COMPUTER WON THIS ROUND";
         }
 
-        else{
+        else {
             winner.textContent = "PLAYER WON THIS ROUND";
         }
     }
 
 }
 
-function restartGame(){
+function restartGame() {
     enableButtons();
     playerScore = 0;
     computerScore = 0;
@@ -80,7 +80,6 @@ function restartGame(){
     winner.textContent = '';
     stat.textContent = '';
 }
-
 function computerChoice() {
     let computerChoice = (Math.random() * 3)
 
