@@ -43,6 +43,8 @@ function getInput(e) {
     let result = playRound(player, computer);
     updateScore();
 
+    console.log(e.target.value);
+
     if(result == 1){
         stat.classList.add('win');
     }
