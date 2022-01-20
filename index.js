@@ -1,8 +1,9 @@
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('button.btn');
 const stat = document.getElementById('status');
 const pscore = document.getElementById('player-score');
 const cscore = document.getElementById('computer-score');
 const winner = document.getElementById('round-winner');
+const restart = document.getElementById('reset');
 
 let computerScore = 0;
 let playerScore = 0;
@@ -14,6 +15,8 @@ cscore.textContent = `COMPUTER: ${computerScore}`;
 buttons.forEach(btn => {
     btn.addEventListener('click', getInput);
 });
+
+restart.addEventListener('click', restartGame)
 
 function updateScore(){
     pscore.textContent = `PLAYER: ${playerScore}`;
@@ -40,8 +43,25 @@ function getInput(e) {
 
     if(computerScore == 5 || playerScore == 5){
         disableButtons();
+        restart.removeAttribute('hidden')
+
+        if(computerScore > playerScore){
+            winner.textContent = "COMPUTER WON THIS ROUND";
+        }
+
+        else{
+            winner.textContent = "PLAYER WON THIS ROUND";
+        }
     }
 
+}
+
+function restartGame(){
+    enableButtons();
+    playerScore = 0;
+    computerScore = 0;
+    updateScore();
+    winner.textContent = '';
 }
 
 function computerChoice() {
