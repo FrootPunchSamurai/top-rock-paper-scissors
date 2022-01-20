@@ -2,4 +2,4 @@
 
 A simple rock paper scissors game made using html, css and javascript 
 
-#:point-down:
+# :point-down:
