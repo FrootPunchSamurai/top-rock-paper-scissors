@@ -89,7 +89,7 @@ header{
 .win-container{
     margin-top: 6vh;
     font-family: 'VT323', monospace;
-    font-size: 5vw;
+    font-size: 4vw;
     display: flex;
     gap: 8px;
     flex-direction: column;
