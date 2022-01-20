@@ -1,105 +1,110 @@
-function userChoice() {
-    const userChoice = prompt("Do you choose Rock, Paper, or Scissors?").toLowerCase();
-    return userChoice
-  }
+const buttons = document.querySelectorAll('button');
+const stat = document.getElementById('status');
+const pscore = document.getElementById('player-score');
+const cscore = document.getElementById('computer-score');
+const winner = document.getElementById('round-winner');
 
+let computerScore = 0;
+let playerScore = 0;
+let roundWinner = '';
+
+pscore.textContent = `PLAYER: ${playerScore}`;
+cscore.textContent = `COMPUTER: ${computerScore}`;
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', getInput);
+});
+
+function updateScore(){
+    pscore.textContent = `PLAYER: ${playerScore}`;
+    cscore.textContent = `COMPUTER: ${computerScore}`;
+}
+
+function disableButtons(){
+    buttons.forEach(btn => {
+        btn.disabled = true;
+    });
+}
+
+function enableButtons(){
+    buttons.forEach(btn => {
+        btn.disabled = false;
+    });
+}
+
+function getInput(e) {
+    let player = e.target.value;
+    let computer = computerChoice();
+    playRound(player, computer);
+    updateScore();
+
+    if(computerScore == 5 || playerScore == 5){
+        disableButtons();
+    }
+
+}
 
 function computerChoice() {
-    let computerChoice = (Math.random()*3)
+    let computerChoice = (Math.random() * 3)
 
-    if((computerChoice >= 0) && (computerChoice < 1)){
+    if ((computerChoice >= 0) && (computerChoice < 1)) {
         return "rock";
     }
-    else if((computerChoice >= 1) && (computerChoice < 2)){
+    else if ((computerChoice >= 1) && (computerChoice < 2)) {
         return "paper";
     }
-    else{
+    else {
         return "scissors";
     }
-  }
+}
 
-function playRound(playerSelection, computerSelection){
-    if(playerSelection == computerSelection){
-        // console.log("Draw , no one wins");
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
+        stat.textContent = "draw";
         return -1;
     }
 
-    if(playerSelection == "rock" && computerSelection == "scissors"){
-        // console.log("You Lose, you chose rock computer chose scissors");
+    if (playerSelection == "rock" && computerSelection == "scissors") {
+        stat.textContent = "You Lose, you chose rock computer chose scissors";
+        computerScore++;
         return 0;
     }
-    else if(playerSelection == "rock" && computerSelection == "paper"){
-        // console.log("You win , you chose rock computer chose paper");
+    else if (playerSelection == "rock" && computerSelection == "paper") {
+        stat.textContent = "You win , you chose rock computer chose paper";
+        playerScore++;
         return 1;
 
     }
 
-    if(playerSelection == "paper" && computerSelection == "scissors"){
-        // console.log("You Lose, you chose paper computer chose scissors");
+    if (playerSelection == "paper" && computerSelection == "scissors") {
+        stat.textContent = "You Lose, you chose paper computer chose scissors";
+        computerScore++;
         return 0;
 
     }
-    else if(playerSelection == "paper" && computerSelection == "rock"){
-        // console.log("You win , you chose paper computer chose rock");
+    else if (playerSelection == "paper" && computerSelection == "rock") {
+        stat.textContent = "You win , you chose paper computer chose rock";
+        playerScore++;
         return 1;
 
     }
 
-    if(playerSelection == "scissors" && computerSelection == "paper"){
-        // console.log("You win , you chose scissors computer chose paper");
+    if (playerSelection == "scissors" && computerSelection == "paper") {
+        stat.textContent = "You win , you chose scissors computer chose paper";
+        playerScore++;
         return 1;
 
     }
-    else if(playerSelection == "scissors" && computerSelection == "rock"){
-        // console.log("You Lose , you chose scissors computer chose rock");
+    else if (playerSelection == "scissors" && computerSelection == "rock") {
+        stat.textContent = "You Lose , you chose scissors computer chose rock";
+        computerScore++;
         return 0;
 
     }
 }
 
-function game(){
 
-    let cscore = 0, pscore = 0, count = 5;
 
-    for (let i = 1; i <= count; i++) {
 
-        let playerSelection = userChoice();
-        let computerSelection = computerChoice();
-        let status = playRound(playerSelection, computerSelection);
-
-        if(status == -1){
-            console.log("Draw , no one wins");
-            count++;
-        }
-
-        if(status == 0){
-            console.log("You Lost this round");
-            cscore++;
-        }
-
-        if(status == 1){
-            console.log("You won this round");
-            pscore++;
-        }
-
-    }
-
-    console.log("You Scored " + pscore + " Computer Scored " + cscore);
-
-    if(pscore > cscore){
-        console.log("You win");
-    }
-
-    else if(pscore == cscore){
-        console.log("Draw");
-    }
-
-    else{
-        console.log("You Lose");
-    }
-
-}
-
-game();
 
 
