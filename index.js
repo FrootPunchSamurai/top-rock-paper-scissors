@@ -30,20 +30,34 @@ function disableButtons(){
 }
 
 function enableButtons(){
+    restart.classList.add('hide');
     buttons.forEach(btn => {
         btn.disabled = false;
     });
 }
 
 function getInput(e) {
+    stat.removeAttribute('class');
     let player = e.target.value;
     let computer = computerChoice();
-    playRound(player, computer);
+    let result = playRound(player, computer);
     updateScore();
+
+    if(result == 1){
+        stat.classList.add('win');
+    }
+
+    if(result == 0){
+        stat.classList.add('lose');
+    }
+
+    if(result == -1){
+        stat.classList.add('draw');
+    }
 
     if(computerScore == 5 || playerScore == 5){
         disableButtons();
-        restart.removeAttribute('hidden')
+        restart.removeAttribute('class');
 
         if(computerScore > playerScore){
             winner.textContent = "COMPUTER WON THIS ROUND";
@@ -62,6 +76,7 @@ function restartGame(){
     computerScore = 0;
     updateScore();
     winner.textContent = '';
+    stat.textContent = '';
 }
 
 function computerChoice() {
@@ -98,7 +113,6 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection == "paper" && computerSelection == "scissors") {
         stat.textContent = "You Lose, you chose paper computer chose scissors";
-        computerScore++;
         return 0;
 
     }
