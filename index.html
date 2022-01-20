@@ -6,17 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/index.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <script
+    src="https://kit.fontawesome.com/4c536a6bd5.js"
+    crossorigin="anonymous"
+  ></script>
 </head>
 <body>
     <header>
         <title>ROCK PAPER SCISSOR</title>
+        <h3 class="heading">ROCK PAPER SCISSOR</h3>
     </header>
 
     <main class="main">
         <div class="buttons">
-            <button id="rock" value="rock" class="btn">Rock</button>
-            <button id="paper" value="paper" class="btn">Paper</button>
-            <button id="scissor" value="scissors" class="btn">Scissor</button>       
+            <button id="rock" value="rock" class="btn">✊</button>
+            <button id="paper" value="paper" class="btn">✋</button>
+            <button id="scissor" value="scissors" class="btn">✌️</button>       
         </div>
 
         <div class="score-container">
@@ -32,10 +37,21 @@
 
         <div class="win-container">
             <p id="round-winner"></p>
-            <button id="reset" class="reset" hidden>Restart</button>
+            <button id="reset" class="reset hide">RESTART</button>
         </div>
     </main>
 
+    <footer class="footer">
+        <p>
+          <script>
+            document.write(new Date().getFullYear())
+          </script>
+          Amruth Kiran
+        </p>
+        <a href="" target="_blank">
+          <i class="fab fa-github"></i
+        ></a>
+      </footer>
     
     
 
